@@ -12,7 +12,7 @@ StockSmart is a full-stack, enterprise-grade **Retail Inventory Optimization and
 
 ---
 
-## 📐 System Architecture
+## System Architecture
 
 ```mermaid
 graph TD
@@ -48,7 +48,7 @@ graph TD
 
 ---
 
-## 🗂️ Project Structure
+## Project Structure
 
 ```
 stocksmart/
@@ -98,7 +98,7 @@ stocksmart/
 
 ---
 
-## ⚡ Key Capabilities & Modules
+## Key Capabilities & Modules
 
 1. **Retail Operations Dashboard (`/dashboard`)**:
    - Total catalog SKUs, store/distribution center counts, and units on hand.
@@ -120,7 +120,7 @@ stocksmart/
 
 4. **Inter-Store Transfers (`/transfers`)**:
    - Four-stage lifecycle state machine:
-     $$\text{REQUESTED} \longrightarrow \text{APPROVED} \longrightarrow \text{IN\_TRANSIT} \longrightarrow \text{RECEIVED}$$
+     `REQUESTED` → `APPROVED` → `IN_TRANSIT` → `RECEIVED`
    - Auto-deducts source warehouse inventory upon dispatch and increments destination inventory upon arrival.
 
 5. **Supplier Replenishment & Purchase Orders (`/purchase-orders`)**:
@@ -130,7 +130,7 @@ stocksmart/
 
 6. **Customer Sales Orders (`/sales-orders`)**:
    - POS and customer order management with inventory reservation.
-   - Fulfillment workflow (`PENDING` $\rightarrow$ `CONFIRMED` $\rightarrow$ `PACKED` $\rightarrow$ `SHIPPED` $\rightarrow$ `DELIVERED`).
+   - Fulfillment workflow (`PENDING` → `CONFIRMED` → `PACKED` → `SHIPPED` → `DELIVERED`).
 
 7. **Hardware-Ready Scanner Hub (`/scanner`)**:
    - **Barcode Quick Scan**: Instant product discovery, local inventory, and multi-location availability matrix.
@@ -143,7 +143,7 @@ stocksmart/
 
 ---
 
-## 🐳 Quickstart with Docker Compose
+## Quickstart with Docker Compose
 
 Run the entire application stack (Oracle DB 23c Free, Spring Boot backend, and Angular frontend) with one command from the project root:
 
@@ -176,7 +176,7 @@ docker compose down -v
 
 ---
 
-## 💻 Local Development Setup (Without Docker)
+## Local Development Setup (Without Docker)
 
 ### Prerequisites
 - **Java**: OpenJDK 21 or Eclipse Temurin 21+
@@ -251,7 +251,7 @@ Compiled server and browser assets will be output to `dist/frontend`.
 
 ---
 
-## 🔄 Continuous Integration (CI/CD)
+## Continuous Integration (CI/CD)
 
 The GitHub Actions CI pipeline is defined in [`.github/workflows/ci.yml`](.github/workflows/ci.yml). It automatically triggers on every push and pull request to `main` and `master`:
 
@@ -271,7 +271,7 @@ The GitHub Actions CI pipeline is defined in [`.github/workflows/ci.yml`](.githu
 
 ---
 
-## 📡 Key REST API Reference
+## Key REST API Reference
 
 | Domain | Method | Endpoint | Description |
 |---|---|---|---|
@@ -309,5 +309,5 @@ The GitHub Actions CI pipeline is defined in [`.github/workflows/ci.yml`](.githu
 
 ---
 
-## 📄 License
+## License
 This project is licensed under the MIT License.

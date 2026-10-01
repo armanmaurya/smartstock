@@ -4,7 +4,7 @@ A robust, enterprise-grade Retail Inventory Management & Optimization backend bu
 
 ---
 
-## 🏗️ Standard Java Project Structure
+## Standard Java Project Structure
 
 ```
 inventory/
@@ -98,7 +98,7 @@ inventory/
 
 ---
 
-## ⚡ Core Retail Inventory Features
+## Core Retail Inventory Features
 
 1. **Product Catalog**:
    - Manage SKUs, brand, category, unit of measure, cost price, and selling price.
@@ -112,7 +112,7 @@ inventory/
    - Granular stock movement audit trail for every addition, deduction, transfer, and adjustment.
 
 3. **Retail Workflows**:
-   - **Inter-store / Warehouse-to-Store Transfers**: Full state machine (`REQUESTED` ➔ `APPROVED` ➔ `IN_TRANSIT` (stock deducted from source) ➔ `RECEIVED` (stock added to destination)).
+   - **Inter-store / Warehouse-to-Store Transfers**: Full state machine (`REQUESTED` → `APPROVED` → `IN_TRANSIT` (stock deducted from source) → `RECEIVED` (stock added to destination)).
    - **Stock Adjustments**: Audit reason codes (`DAMAGED_GOODS`, `EXPIRED_STOCK`, `SHRINKAGE_THEFT`, `CYCLE_COUNT_VARIANCE`, `SYSTEM_CORRECTION`).
    - **Customer Sales Order Processing**: Validates stock availability, reserves inventory, and fulfills deduction.
 
@@ -133,7 +133,7 @@ inventory/
 
 ---
 
-## 🔌 API Endpoints Reference
+## API Endpoints Reference
 
 | Module | Method | Endpoint | Description |
 |---|---|---|---|
@@ -180,7 +180,7 @@ inventory/
 
 ---
 
-## ⚙️ What Is Needed From Your Side (Oracle DB Setup)
+## What Is Needed From Your Side (Oracle DB Setup)
 
 The backend is configured to run **out-of-the-box** using an in-memory Oracle-compatible database so you can immediately test all APIs without setup.
 
@@ -208,7 +208,7 @@ When you are ready to connect to your live **Oracle Database**:
 
 ---
 
-## 🐳 Docker Compose Quickstart
+## Docker Compose Quickstart
 
 Run both **Oracle Database 23c Free** and the **StockSmart Backend** with a single command:
 
