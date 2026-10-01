@@ -1,0 +1,24 @@
+<div class="min-h-screen bg-white text-slate-900 flex font-sans antialiased selection:bg-indigo-600 selection:text-white">
+  <!-- Backdrop for mobile drawer -->
+  @if (isSidebarOpen()) {
+    <div
+      (click)="closeSidebar()"
+      class="fixed inset-0 bg-slate-900/30 backdrop-blur-xs z-40 md:hidden transition-opacity"
+    ></div>
+  }
+
+  <!-- Sidebar Navigation (Full Height) -->
+  <app-sidebar [isOpen]="isSidebarOpen()" (closeSidebar)="closeSidebar()" />
+
+  <!-- Main Content Stage -->
+  <div class="flex-1 flex flex-col min-w-0 min-h-screen">
+    <app-navbar (toggleSidebar)="toggleSidebar()" />
+
+    <main class="flex-1 p-6 lg:p-8 max-w-7xl w-full mx-auto">
+      <router-outlet />
+    </main>
+  </div>
+
+  <!-- Global Floating Toast Notifications -->
+  <app-toast />
+</div>

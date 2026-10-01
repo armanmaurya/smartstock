@@ -1,0 +1,29 @@
+# Compiled & Build Artifacts
+**/target/
+**/dist/
+**/.angular/cache/
+**/node_modules/
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE & Editor Files
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.settings/
+.project
+.classpath
+.apt_generated
+
+# System & Temporary Files
+.DS_Store
+Thumbs.db
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

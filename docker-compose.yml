@@ -1,0 +1,74 @@
+services:
+  smartstock-db:
+    image: gvenzl/oracle-free:latest
+    container_name: smartstock-db
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PASSWORD=oracle_admin_pass
+      - APP_USER=INVENTORY_USER
+      - APP_USER_PASSWORD=inventory_pass
+    volumes:
+      - smartstock_oracle_data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD-SHELL", "healthcheck.sh"]
+      interval: 15s
+      timeout: 10s
+      retries: 20
+      start_period: 60s
+    restart: unless-stopped
+    networks:
+      smartstock-network:
+        aliases:
+          - smartstock-db
+          - oracle-db
+
+  smartstock-backend:
+    build:
+      context: ./inventory
+      dockerfile: Dockerfile
+    container_name: smartstock-backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      smartstock-db:
+        condition: service_healthy
+    environment:
+      - SPRING_PROFILES_ACTIVE=oracle
+      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@smartstock-db:1521/FREEPDB1
+      - SPRING_DATASOURCE_USERNAME=INVENTORY_USER
+      - SPRING_DATASOURCE_PASSWORD=inventory_pass
+      - JAVA_OPTS=-Xms256m -Xmx512m
+    restart: on-failure
+    networks:
+      smartstock-network:
+        aliases:
+          - smartstock-backend
+          - backend
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "4200:4000"
+    depends_on:
+      - smartstock-backend
+    environment:
+      - PORT=4000
+    restart: unless-stopped
+    networks:
+      smartstock-network:
+        aliases:
+          - frontend
+          - smartstock-frontend
+
+volumes:
+  smartstock_oracle_data:
+    name: smartstock_oracle_data
+
+networks:
+  smartstock-network:
+    name: smartstock_network
+    driver: bridge
